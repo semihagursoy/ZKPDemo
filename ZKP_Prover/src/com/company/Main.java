@@ -18,12 +18,11 @@ public class Main {
         try(Socket socket = new Socket("localhost", 5000)) {
             Thread.sleep(1000);
             Prover prover = new Prover();
-            //socket.setSoTimeout(5000);
+            socket.setSoTimeout(4000);
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter proverSends = new PrintWriter(socket.getOutputStream(), true);
             String response;
-
 
             System.out.println("Your random p(mod) value: " + prover.getP());
             System.out.println("Your random g(generator) value: " + prover.getG());
@@ -48,7 +47,6 @@ public class Main {
             JSONObject proof = new JSONObject();
             proof.put("Z" , prover.getZ());
             proverSends.println(proof);
-
 
             response = bufferedReader.readLine();
             System.out.println(response);

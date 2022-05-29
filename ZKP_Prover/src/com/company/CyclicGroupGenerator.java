@@ -30,7 +30,6 @@ public class CyclicGroupGenerator {
             p = BigInteger.probablePrime(10, r);
         } while(!isSafePrime(p));
 
-        //p = new BigInteger("97");
         numbers = zGenerator(p, p.subtract(BigInteger.ONE).intValue());
 
         //get one value from the array of generators of the cyclic group

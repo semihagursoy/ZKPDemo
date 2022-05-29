@@ -3,7 +3,7 @@ package com.company;
 import java.math.BigInteger;
 
 public class Prover {
-    private BigInteger secret = BigInteger.valueOf(RandomNumberGenerator.generate());
+    private BigInteger secret = RandomNumberGenerator.generate();
     private BigInteger randomY;
     private BigInteger p,g,X,Y,Z,challenge;
     CyclicGroupGenerator cyclicGroup = new CyclicGroupGenerator();
@@ -60,6 +60,6 @@ public class Prover {
     }
 
     public void calculateZ(int challenge){
-        this.Z = randomY.add(secret.multiply(BigInteger.valueOf(challenge)));
+        this.Z = (randomY.add(secret.multiply(BigInteger.valueOf(challenge)).mod(p)));
     }
 }
