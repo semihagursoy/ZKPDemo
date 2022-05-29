@@ -5,15 +5,16 @@ import java.math.BigInteger;
 public class Prover {
     private BigInteger secret = RandomNumberGenerator.generate();
     private BigInteger randomY;
-    private BigInteger p,g,X,Y,Z,challenge;
+    private BigInteger X,Y,Z,challenge;
     CyclicGroupGenerator cyclicGroup = new CyclicGroupGenerator();
+    private BigInteger p = cyclicGroup.getP();
+    private BigInteger g = cyclicGroup.getG();
+
 
     public Prover() {
         chooseRandomY();
         calculateX();
         calculateY();
-        this.p = cyclicGroup.getP();
-        this.g = cyclicGroup.getG();
     }
 
     public BigInteger getX() {

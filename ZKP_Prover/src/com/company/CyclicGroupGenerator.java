@@ -11,8 +11,6 @@ public class CyclicGroupGenerator {
 
     public CyclicGroupGenerator() {
         generate();
-        this.p = getP();
-        this.g = getG();
     }
     public BigInteger getP() {
         return p;
@@ -27,14 +25,14 @@ public class CyclicGroupGenerator {
         SecureRandom r = new SecureRandom();
 
         do {
-            p = BigInteger.probablePrime(10, r);
+            this.p = BigInteger.probablePrime(10, r);
         } while(!isSafePrime(p));
 
         numbers = zGenerator(p, p.subtract(BigInteger.ONE).intValue());
 
         //get one value from the array of generators of the cyclic group
         int index = (int)(Math.random() * numbers.size());
-        g = numbers.get(index);
+        this.g = numbers.get(index);
     }
 
     private boolean isSafePrime(BigInteger i)
